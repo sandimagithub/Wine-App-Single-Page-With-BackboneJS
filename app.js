@@ -139,7 +139,10 @@ $(document).on("click", "#add-wine", function(){
 
     },
     success: function(){
-      location.reload();
+      // location.reload();
+      //using backbone.js and calling on the getWines function from above
+       $("#add-wine-modal").modal("hide");
+      getWines();
 
     },
     error: function(){
