@@ -13,40 +13,22 @@ $(document).ready(function()
 	// Edit Product Template 
 		editWineSource = $("#edit-wine-template").html();
 		editWineTemplate = Handlebars.compile(editWineSource);
+
+	$.ajax({
+		url: "http://daretodiscover.net/wine",
+		type: "GET",
+		success: function(data) {
+			var html = wineTemplate({wineData: data});
+
+			//we push the html data into the div id="container"-see the index.html
+
+			$("#container").html(html); 
+		},
+		error: function() { 
+			alert("something went wrong");
+		}
+	});
 });
-
-var Router = Backbone.Router.extend ({
-  routes: {
-    "index":"index",
-    "edit/:id":"edit_wine"
-  }
-});
-
-var router = new Router;
-
-function getWines () {
-  // put all the wine from the API--that was originally on the document.ready function--see the app_without_backbone.js file"
-
-  $.ajax({
-    url: "http://daretodiscover.net/wine",
-    type: "GET",
-    success: function(data) {
-      var html = wineTemplate({wineData: data});
-
-      //we push the html data into the div id="container"-see the index.html
-
-      $("#container").html(html); 
-    },
-    error: function() { 
-      alert("something went wrong");
-    }
-  });
-}
-
-router.on("route:index", getWines);
-
-//this command starts backbonejs!
-Backbone.history.start();
 
 //When user clicks on the "edit" button, we need to get the item that they want to edit first. 
 
