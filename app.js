@@ -72,3 +72,19 @@ $(document).on("click", "#submit-edits", function(){
   });
 
 });
+
+//when a user wants to delete an item...
+
+$(document).on("click", ".delete-button", function(){
+  $.ajax({
+    url: "http://daretodiscover.net/wine/" + $(this).attr("id"),
+    type: "DELETE", 
+    success: function(){
+      // this will reload the page
+      location.reload(); 
+    },
+    error: function(){
+      alert("Something went wrong!")
+    }
+ });
+});
