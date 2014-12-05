@@ -88,3 +88,36 @@ $(document).on("click", ".delete-button", function(){
     }
  });
 });
+
+//when user wants to add a new wine ...
+
+$(document).on("click", "#add-wine", function(){
+  $.ajax({
+    url: "http://daretodiscover.net/wine",
+    type: "POST",
+    data: {
+     
+
+        // notice how we are are using the "id on the modal form instead of the "name" on the form as as seen on the above ajax syntax
+
+      name: $("#add-name").val(),
+      year: $("#add-year").val(),
+      grapes: $("#add-grapes").val(),
+      country: $("#add-country").val(),
+      region: $("#add-region").val(),
+      description: $("#add-description").val(),
+      picture: $("#add-picture").val()
+     
+
+    },
+    success: function(){
+      location.reload();
+
+    },
+    error: function(){
+      alert("Something went wrong!")
+    }
+
+  });
+
+});

@@ -24,6 +24,10 @@
      .margin-top-10{
         margin-top: 10px;
     }
+
+     .margin-bottom-10{
+        margin-bottom: 10px;
+    }
      .txt-center {
         text-align: center;
     }
@@ -37,6 +41,11 @@
 </div>
 
 <script id="show-wines-template" type="text/x-handlebars-template">
+
+<div class="container margin-top-40 margin-bottom-10">
+  <div>
+  <a data-toggle="modal" data-target="#add-wine-modal" class="btn btn-primary"> Add New Wine</a>
+  </div>
 <!--this loops through each user data using handlebar syntax -->
 
 {{#each wineData}}
@@ -127,6 +136,82 @@
     </div>
     
     </script>
+
+<!--modal for adding a new wine-->
+
+<div id="add-wine-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Add a New Wine</h4>
+      </div>
+      <div class="modal-body">
+        
+        <div class="bold">
+          Name
+        </div>
+
+        <div class="margin-top-10">
+          <input type ="text" class="form-control" id="add-name"/>
+        </div>
+
+        <div class="bold margin-top-10">
+          Year
+        </div>
+
+        <div class="margin-top-10">
+          <input type ="text" class="form-control" id="add-year"/>
+        </div>
+
+        <div class="bold margin-top-10">
+          Grapes
+        </div>
+
+        <div class="margin-top-10">
+          <input type ="text" class="form-control" id="add-grapes"/>
+        </div>
+
+         <div class="bold margin-top-10">
+          Country
+        </div>
+
+        <div class="margin-top-10">
+          <input type ="text" class="form-control" id="add-country"/>
+        </div>
+
+         <div class="bold margin-top-10">
+          Region
+        </div>
+
+        <div class="margin-top-10">
+          <input type ="text" class="form-control" id="add-region"/>
+        </div>
+
+         <div class="bold margin-top-10">
+          Description
+        </div>
+
+        <div class="margin-top-10">
+          <input type ="text" class="form-control" id="add-description"/>
+        </div>
+
+         <div class="bold margin-top-10">
+          Picture
+        </div>
+
+        <div class="margin-top-10">
+          <input type ="text" class="form-control" id="add-picture"/>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="add-wine">Add a New Wine</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 </body>
 
