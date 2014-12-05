@@ -26,7 +26,7 @@ var router = new Router;
 
 function getWines () {
   // put all the wine from the API--that was originally on the document.ready function--see the app_without_backbone.js file"
-
+  // the url with #index at the end will access this route
   $.ajax({
     url: "http://daretodiscover.net/wine",
     type: "GET",
@@ -44,6 +44,24 @@ function getWines () {
 }
 
 router.on("route:index", getWines);
+//getWines is a function that allows for us to call for it more than once, on the show all (index) and on the delete routes
+
+router.on("route:edit_wine", function(id) {
+  //pasted what was originally in the document.onclick into this function for backbone.js
+  //the url with #edit/:id can access this route
+$.ajax({
+    url: "http://daretodiscover.net/wine/" + id,
+    type: "GET",
+    success: function(data) {
+        var html = editWineTemplate(data);
+            $("#container").html(html);
+           }, 
+    error: function() {
+      alert("Something went wrong");
+      }
+  });
+
+})
 
 //this command starts backbonejs!
 Backbone.history.start();
@@ -51,19 +69,7 @@ Backbone.history.start();
 //When user clicks on the "edit" button, we need to get the item that they want to edit first. 
 
 $(document).on("click", ".edit-button", function(){
-	$.ajax({
-		url: "http://daretodiscover.net/wine/" + $(this).attr("id"),
-		type: "GET",
-		success: function(data) {
-				var html = editWineTemplate(data);
-					  $("#container").html(html);
-           }, 
-    error: function() {
-      alert("Something went wrong");
-
-			}
-
-	});
+	
 });
 
 //when user clicks on submit button after they have edited. 
