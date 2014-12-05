@@ -47,3 +47,28 @@ $(document).on("click", ".edit-button", function(){
 
 	});
 });
+
+//when user clicks on submit button after they have edited. 
+$(document).on("click", "#submit-edits", function(){
+  $.ajax({
+    url: "http://daretodiscover.net/wine/" + $(this).attr("edit_id"),
+    type: "PUT",
+    data: {
+      name: $("input[name=name]").val(),
+      year: $("input[name=year]").val(),
+      grapes: $("input[name=grapes]").val(),
+      country: $("input[name=country]").val(),
+      region: $("input[name=region]").val(),
+      description: $("input[name=description]").val(),
+      picture: $("input[name=picture]").val()
+    },
+    success: function(data){
+      location.reload();
+
+    },
+    error: function(){
+      alert("Something went wrong!")
+    }
+  });
+
+});
