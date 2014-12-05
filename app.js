@@ -87,7 +87,9 @@ $(document).on("click", "#submit-edits", function(){
       picture: $("input[name=picture]").val()
     },
     success: function(data){
-      location.reload();
+      // location.reload();
+      //this will send user back to index using backbone.js
+       window.location.href = "#index";
 
     },
     error: function(){
@@ -105,7 +107,9 @@ $(document).on("click", ".delete-button", function(){
     type: "DELETE", 
     success: function(){
       // this will reload the page
-      location.reload(); 
+      // location.reload(); 
+      //this will send user back to index using backbone.js
+       window.location.href = "#index";
     },
     error: function(){
       alert("Something went wrong!")
