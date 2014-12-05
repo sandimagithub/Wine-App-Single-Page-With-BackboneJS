@@ -1,0 +1,129 @@
+<!Doctype HTML>
+<html>
+<head>
+	<title> Ajax Wine Project </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <style>
+    .smaller {
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .margin-top-40{
+        margin-top: 40px;
+    }
+
+     .margin-top-10{
+        margin-top: 10px;
+    }
+     .txt-center {
+        text-align: center;
+    }
+    </style>
+	
+</head>
+
+<body>
+<div id="container"> 
+   <!--  <button id="load-wine" type="button">Load Wines</button> -->
+</div>
+
+<script id="show-wines-template" type="text/x-handlebars-template">
+<!--this loops through each user data using handlebar syntax -->
+
+{{#each wineData}}
+
+<!--these are the keys of the json objects from the url daretodiscover.net/wine --> 
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src ="{{picture}}">
+      <div class="caption">
+        <h3>{{name}}</h3>
+        <p>{{year}}</p>
+        <p>{{grapes}}</p>
+        <p>{{country}}</p>
+        <p>{{region}}</p>
+        <p>{{description}}</p>
+        <p><a href="#" class="btn btn-primary edit-button" role="button" id ="{{id}}">Edit</a> <a href="#" class="btn btn-danger" role="button">Delete</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+</script>
+
+<script type="x-handlebars-template" id="edit-wine-template">
+  <div class ="well smaller margin-top-40">
+    <div class ="bold">
+      Name
+    </div>
+    <div class = "margin-top-10">
+      <input type ="text" class="form-control" name="name" value={{name}}>
+    </div>
+
+    <div class ="bold margin-top-10">
+      Year
+    </div>
+
+    <div class = "margin-top-10">
+      <input type ="text" class="form-control" name="year" value={{year}}>
+    </div>
+
+    <div class ="bold margin-top-10">
+      Grapes
+    </div>
+
+    <div class = "margin-top-10">
+     <input type ="text" class="form-control" name="grapes" value={{grapes}}>
+   </div>
+
+    <div class ="bold margin-top-10">
+      Country
+    </div>
+
+    <div class = "margin-top-10">
+     <input type ="text" class="form-control" name="country" value={{country}}>
+   </div>
+
+   <div class ="bold margin-top-10">
+      Region
+    </div>
+
+    <div class = "margin-top-10">
+     <input type ="text" class="form-control" name="region" value={{region}}>
+   </div>
+
+   <div class ="bold margin-top-10">
+      Description
+    </div>
+
+    <div class = "margin-top-10">
+     <input type ="text" class="form-control" name="description" value={{description}}>
+   </div>
+
+   <div class = "margin-top-10 txt-center">
+   <!--notice the custom attribute that app.js will grap on the POST-->
+    <a href="#" class="btn btn-success" id="submit-edits" edit_id="{{id}}"> Submit Edits </a>
+      </div>
+    </div>
+    
+    </script>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="handlebars-v2.0.0.js"></script>
+<script src="app.js"></script>
+
+</html>
